@@ -1,0 +1,401 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:local="clr-namespace:ModernUIElements">
+
+    <local:TimeSpanSinglePropertyConverter x:Key="TimeSpanSinglePropertyConverter" />
+    <local:TimeSpanVisibilityConverter x:Key="TimeSpanVisibilityConverter" />
+    <local:PositionForegroundConverter x:Key="PositionForegroundConverter" />
+
+    <!-- ExtendedButton, provides the ability to use a hold and click. Comes with the CAPIRA Q3S5R Style. Bind the ClockValue
+    for hald and click if you'll use your own Style. The Value will be 0 at the beginning and 1 just right befor click will be sended.-->
+    <Style TargetType="{x:Type local:ExtendedButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ExtendedButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding BorderCornerRadius}">
+                        <Grid>
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ProgressBar Value="{TemplateBinding ClockValue}" 
+                                         Minimum="0" Maximum="1" Margin="2" 
+                                         Background="{TemplateBinding Background}" 
+                                         BorderBrush="Transparent"/>
+                            <Viewbox Margin="5">
+                                <ContentControl Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ExtendedRadioButton, mostly provides a button style. Comes with the CAPIRA Q3S5R Style. Provides two new Brush sets for Hover
+    and checked.-->
+    <Style TargetType="{x:Type local:ExtendedRadioButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ExtendedRadioButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding BorderCornerRadius}">
+                        <Grid>
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ProgressBar Value="{TemplateBinding ClockValue}" 
+                                         Minimum="0" Maximum="1" Margin="2" 
+                                         Background="{TemplateBinding Background}" 
+                                         BorderBrush="Transparent"/>
+                            <Viewbox Margin="5">
+                                <ContentControl Content="{TemplateBinding Content}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ExtendedCheckBox, mostly provides a button style. Comes with the CAPIRA Q3S5R Style. Provides two new Brush sets for Hover
+    and checked.-->
+    <Style TargetType="{x:Type local:ExtendedCheckBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ExtendedCheckBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding BorderCornerRadius}">
+                        <Grid>
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ProgressBar Value="{TemplateBinding ClockValue}" 
+                                         Minimum="0" Maximum="1" Margin="2" 
+                                         Background="{TemplateBinding Background}" 
+                                         BorderBrush="Transparent"/>
+                            <Viewbox Margin="5">
+                                <ContentControl Content="{TemplateBinding Content}"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+   
+
+    <Style TargetType="{x:Type local:NumericTextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:NumericTextBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Border BorderThickness="2"
+                                    Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <Viewbox>
+                                <TextBox    Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:NumericTextBox}}, 
+                                            Path=Text, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" BorderBrush="Transparent"
+                                            Background="{TemplateBinding Background}" Margin="5"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:NumericUpDown}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:NumericUpDown}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Border BorderThickness="2"
+                                    Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                                      Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}" 
+                                                      Content="-" FontWeight="Bold" Command="{x:Static local:NumericUpDown.DecreaseCommand}"
+                                                      PermanentClick="True"/>
+                                <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Width="{TemplateBinding TextWidth}"
+                                        Background="{TemplateBinding TextBackground}" >
+                                    <Viewbox>
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                               AncestorType={x:Type local:NumericUpDown}}, Path=Value}" />
+                                    </Viewbox>
+                                </Border>
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                        Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}"
+                                                        Content="+" FontWeight="Bold" Command="{x:Static local:NumericUpDown.IncreaseCommand}"
+                                                        PermanentClick="True"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:TimeSpanUpDown}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TimeSpanUpDown}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Border BorderThickness="2"
+                                    Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                                      Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}" 
+                                                      Content="&lt;" FontWeight="Bold" Command="{x:Static local:TimeSpanUpDown.NextPositionCommand}"
+                                                      PermanentClick="False"/>
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                                      Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}" 
+                                                      Content="-" FontWeight="Bold" Command="{x:Static local:NumericUpDown.DecreaseCommand}"
+                                                      PermanentClick="True"/>
+                                <Border BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Width="{TemplateBinding TextWidth}"
+                                        Background="{TemplateBinding TextBackground}" >
+                                    <Viewbox>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanSinglePropertyConverter}">
+                                                        <Binding Source="Days" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, 
+                                                                 AncestorType={x:Type local:TimeSpanUpDown}}"
+                                                                 Path="Value" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="Days" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                                <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{StaticResource PositionForegroundConverter}">
+                                                        <Binding Source="Days" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Position" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="SelectedForeground" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Foreground" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                            <TextBlock Text=".">
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="DaysMark" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanSinglePropertyConverter}">
+                                                        <Binding Source="Hours" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, 
+                                                                 AncestorType={x:Type local:TimeSpanUpDown}}"
+                                                                 Path="Value" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="Hours" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                                <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{StaticResource PositionForegroundConverter}">
+                                                        <Binding Source="Hours" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Position" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="SelectedForeground" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Foreground" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                            <TextBlock Text=":">
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="HoursMark" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanSinglePropertyConverter}">
+                                                        <Binding Source="Minutes" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, 
+                                                                 AncestorType={x:Type local:TimeSpanUpDown}}"
+                                                                 Path="Value" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="Minutes" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                                <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{StaticResource PositionForegroundConverter}">
+                                                        <Binding Source="Minutes" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Position" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="SelectedForeground" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Foreground" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                            <TextBlock Text=":">
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="MinutesMark" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanSinglePropertyConverter}">
+                                                        <Binding Source="Seconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, 
+                                                                 AncestorType={x:Type local:TimeSpanUpDown}}"
+                                                                 Path="Value" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="Seconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                                <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{StaticResource PositionForegroundConverter}">
+                                                        <Binding Source="Seconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Position" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="SelectedForeground" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Foreground" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                            <TextBlock Text=".">
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="SecondsMark" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanSinglePropertyConverter}">
+                                                        <Binding Source="Milliseconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, 
+                                                                 AncestorType={x:Type local:TimeSpanUpDown}}"
+                                                                 Path="Value" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                                <TextBlock.Visibility>
+                                                    <MultiBinding Converter="{StaticResource TimeSpanVisibilityConverter}">
+                                                        <Binding Source="Milliseconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Minimum" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Maximum" />
+                                                    </MultiBinding>
+                                                </TextBlock.Visibility>
+                                                <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{StaticResource PositionForegroundConverter}">
+                                                        <Binding Source="Milliseconds" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Position" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="SelectedForeground" />
+                                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TimeSpanUpDown}}" Path="Foreground" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Viewbox>
+                                </Border>
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                        Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}"
+                                                        Content="+" FontWeight="Bold" Command="{x:Static local:NumericUpDown.IncreaseCommand}"
+                                                        PermanentClick="True"/>
+                                <local:ExtendedButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                        Width="{TemplateBinding ButtonWidth}" BorderBackground="{TemplateBinding BorderBackground}"
+                                                        Content="&gt;" FontWeight="Bold" Command="{x:Static local:TimeSpanUpDown.LastPositionCommand}"
+                                                        PermanentClick="False"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:ExtendedProgressBar}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ExtendedProgressBar}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding BorderCornerRadius}">
+                        <Grid>
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="2"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBackground}" />
+                            <Border CornerRadius="{TemplateBinding BorderCornerRadius}" BorderThickness="1"
+                                    BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <StackPanel  Margin="5" Orientation="Horizontal">
+                                <Viewbox Width="{TemplateBinding ContentWidth}">
+                                    <ContentControl Content="{TemplateBinding Content}"
+                                                    ContentStringFormat="{Binding Source={RelativeSource AncestorType={x:Type local:ExtendedProgressBar},Mode=FindAncestor}, Path=ContentStringFormat}"
+                                                    Background="White"/>
+                                </Viewbox>
+                                <Polygon Width="{TemplateBinding ProgressBarWidth}" VerticalAlignment="Center"
+                                         Points="{TemplateBinding ProgressBarPoints}"
+                                         Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding ProgressBarFill}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
